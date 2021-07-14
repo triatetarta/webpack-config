@@ -14,7 +14,7 @@ const elvenGauntletsRecipe = {
 };
 
 const Recipes = () => {
-  const [recipe, setRecipe] = useState(elvenShieldRecipe);
+  const [recipe, setRecipe] = useState({});
 
   return (
     <div>

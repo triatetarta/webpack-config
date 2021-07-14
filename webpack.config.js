@@ -13,7 +13,9 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = {
   mode: mode,
-  target: target,
+
+  entry: './src/index.js',
+
   output: {
     path: path.resolve(__dirname, 'dist'),
     assetModuleFilename: 'images/[hash][ext][query]',
@@ -41,6 +43,9 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
+          options: {
+            cacheDirectory: true,
+          },
         },
       },
     ],
@@ -52,10 +57,13 @@ module.exports = {
       template: './src/index.html',
     }),
   ],
-  resolve: {
-    extensions: ['.js', 'jsx'],
-  },
+
+  target: target,
   devtool: 'source-map',
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+
   devServer: {
     contentBase: './dist',
     hot: true,
